@@ -1072,4 +1072,11 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
         }
         collection.add(new AttributeModifiable(getHandle().aX(), (new AttributeRanged("generic.maxHealth", scaledHealth ? healthScale : getMaxHealth(), 0.0D, Float.MAX_VALUE)).a("Max Health").a(true)));
     }
+
+    @Override
+    public void respawn() {
+        if (entity.dead) {
+            server.getServer().getPlayerList().moveToWorld(getHandle(), 0, false);
+        }
+    }
 }
